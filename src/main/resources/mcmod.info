@@ -1,0 +1,16 @@
+[
+{
+  "modid": "endervator",
+  "name": "Endervator",
+  "description": "Ender-powered elevators.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["jtripled"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["voxen"]
+}
+]

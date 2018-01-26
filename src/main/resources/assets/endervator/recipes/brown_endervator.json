@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "endervator",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:concrete_powder",
+      "data": 12
+    },
+    "X": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "item": "endervator:brown_endervator",
+    "count": 4
+  }
+}
