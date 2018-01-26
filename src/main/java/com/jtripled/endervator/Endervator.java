@@ -16,14 +16,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod.EventBusSubscriber
 public class Endervator extends ModBase
 {
+    public static final String ID = "endervator";
+    public static final String NAME = "Endervator";
+    public static final String VERSION = "1.0";
+    
     @Mod.Instance(Endervator.ID)
     public static Endervator INSTANCE;
     
     public static Registry REGISTRY;
-    
-    public static final String ID = "endervator";
-    public static final String NAME = "Endervator";
-    public static final String VERSION = "1.0";
     
     public static final Network NETWORK = new Network(ID);
 
@@ -46,15 +46,15 @@ public class Endervator extends ModBase
     }
     
     @Override
-    public Network getNetwork()
-    {
-        return NETWORK;
-    }
-    
-    @Override
     public Registry getRegistry()
     {
         return REGISTRY;
+    }
+    
+    @Override
+    public Network getNetwork()
+    {
+        return NETWORK;
     }
     
     @Mod.EventHandler
