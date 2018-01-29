@@ -1,10 +1,12 @@
 package com.jtripled.endervator;
 
 import com.jtripled.endervator.block.BlockEndervator;
-import com.jtripled.endervator.event.EndervatorMessageHandler;
+import com.jtripled.endervator.event.EndervatorMessageParticleHandler;
+import com.jtripled.endervator.event.EndervatorMessageTeleportHandler;
 import com.jtripled.voxen.block.IBlockBase;
 import com.jtripled.voxen.mod.RegistrationHandler;
 import com.jtripled.voxen.mod.Registry;
+import com.jtripled.voxen.network.MessageParticle;
 import com.jtripled.voxen.network.MessageTeleport;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraftforge.fml.relauncher.Side;
@@ -56,6 +58,7 @@ public class EndervatorRegistry implements Registry
     @Override
     public void onRegisterMessages(RegistrationHandler handler)
     {
-        handler.registerMessage(EndervatorMessageHandler.class, MessageTeleport.class, Side.SERVER);
+        handler.registerMessage(EndervatorMessageTeleportHandler.class, MessageTeleport.class, Side.SERVER);
+        handler.registerMessage(EndervatorMessageParticleHandler.class, MessageParticle.class, Side.CLIENT);
     }
 }

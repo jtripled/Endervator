@@ -1,15 +1,17 @@
 package com.jtripled.endervator.event;
 
+import com.jtripled.endervator.Endervator;
 import com.jtripled.endervator.block.BlockEndervator;
+import com.jtripled.voxen.network.MessageParticle;
 import com.jtripled.voxen.network.MessageTeleport;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -19,7 +21,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
  *
  * @author jtripled
  */
-public class EndervatorMessageHandler implements IMessageHandler<MessageTeleport, IMessage>
+public class EndervatorMessageTeleportHandler implements IMessageHandler<MessageTeleport, IMessage>
 {
     @Override
     public IMessage onMessage(MessageTeleport message, MessageContext context)
@@ -62,7 +64,7 @@ public class EndervatorMessageHandler implements IMessageHandler<MessageTeleport
         
         player.setPositionAndUpdate(x, y, z);
         player.world.playSound((EntityPlayer)null, x, y, z, SoundEvents.ENTITY_ENDERPEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F);
-        BlockEndervator.TELEPORTS.add(new Vec3d(x, y, z));
+        Endervator.INSTANCE.getNetwork().sendToDimension(new MessageParticle(new BlockPos(x, y, z), EnumParticleTypes.PORTAL), player.dimension);
         return null;
     }
 }
