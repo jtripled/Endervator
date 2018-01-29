@@ -34,12 +34,7 @@ public class EndervatorInputHandler
     {
         EntityPlayer player = Minecraft.getMinecraft().player;
         boolean sneaking = player.isSneaking();
-        boolean jumping = false;
-        try {
-            Field isJumpingField = EntityLivingBase.class.getDeclaredField("isJumping");
-            isJumpingField.setAccessible(true);
-            jumping = isJumpingField.getBoolean(player);
-        } catch (Exception ex) {}
+        boolean jumping = player.isJumping;
         boolean teleport = false;
         EnumFacing direction = null;
         if (lastSneaking != sneaking)
