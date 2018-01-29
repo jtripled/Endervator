@@ -3,9 +3,11 @@ package com.jtripled.endervator.event;
 import com.jtripled.endervator.Endervator;
 import com.jtripled.endervator.block.BlockEndervator;
 import com.jtripled.voxen.network.MessageTeleport;
+import java.lang.reflect.Field;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -32,7 +34,12 @@ public class EndervatorInputHandler
     {
         EntityPlayer player = Minecraft.getMinecraft().player;
         boolean sneaking = player.isSneaking();
-        boolean jumping = !player.onGround;
+        boolean jumping = false;
+        try {
+            Field isJumpingField = EntityLivingBase.class.getDeclaredField("isJumping");
+            isJumpingField.setAccessible(true);
+            jumping = isJumpingField.getBoolean(player);
+        } catch (Exception ex) {}
         boolean teleport = false;
         EnumFacing direction = null;
         if (lastSneaking != sneaking)
