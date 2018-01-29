@@ -21,13 +21,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author jtripled
  */
 @Mod.EventBusSubscriber
-@SideOnly(Side.CLIENT)
 public class EndervatorInputHandler
 {
     private static boolean lastSneaking;
     private static boolean lastJumping;
     
     @SubscribeEvent
+    @SideOnly(Side.CLIENT)
     public static void onInput(InputEvent event)
     {
         EntityPlayer player = Minecraft.getMinecraft().player;

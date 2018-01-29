@@ -12,13 +12,14 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  *
  * @author jtripled
  */
-@Mod(modid = Endervator.ID, name = Endervator.NAME, version = Endervator.VERSION)
+@Mod(modid = Endervator.ID, name = Endervator.NAME, version = Endervator.VERSION, dependencies = Endervator.DEPENDS)
 @Mod.EventBusSubscriber
 public class Endervator extends ModBase
 {
     public static final String ID = "endervator";
     public static final String NAME = "Endervator";
     public static final String VERSION = "1.0";
+    public static final String DEPENDS = "required-after:voxen";
     
     @Mod.Instance(Endervator.ID)
     public static Endervator INSTANCE;
