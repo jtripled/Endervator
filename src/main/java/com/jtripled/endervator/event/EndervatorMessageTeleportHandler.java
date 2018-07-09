@@ -64,7 +64,7 @@ public class EndervatorMessageTeleportHandler implements IMessageHandler<Message
         
         player.setPositionAndUpdate(x, y, z);
         player.world.playSound((EntityPlayer)null, x, y, z, SoundEvents.ENTITY_ENDERPEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F);
-        Endervator.INSTANCE.getNetwork().sendToDimension(new MessageParticle(new BlockPos(x, y, z), EnumParticleTypes.PORTAL), player.dimension);
+        Endervator.INSTANCE.getNetwork().sendToDimension(new MessageParticle(x, y, z, EnumParticleTypes.PORTAL), player.dimension);
         return null;
     }
 }

@@ -21,14 +21,16 @@ public class EndervatorMessageParticleHandler implements IMessageHandler<Message
     {
         EntityPlayerSP player = Minecraft.getMinecraft().player;
         World world = player.world;
-        BlockPos pos = message.getPos();
+        double x = message.getX();
+        double y = message.getY();
+        double z = message.getZ();
         EnumParticleTypes particle = message.getParticle();
         
-        if (player.getDistanceSq(pos) < 50.0f)
+        if (player.getDistanceSq(new BlockPos(x, y, z)) < 50.0f)
         {
             for (int j = 0; j < 32; ++j)
             {
-                world.spawnParticle(particle, pos.getX(), pos.getY() + world.rand.nextDouble() * 2.0D, pos.getZ(), world.rand.nextGaussian(), 0.0D, world.rand.nextGaussian());
+                world.spawnParticle(particle, x, y + world.rand.nextDouble() * 2.0D, z, world.rand.nextGaussian(), 0.0D, world.rand.nextGaussian());
             }
         }
         
