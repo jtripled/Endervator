@@ -8,7 +8,7 @@ import com.jtripled.voxen.mod.RegistrationHandler;
 import com.jtripled.voxen.mod.Registry;
 import com.jtripled.voxen.network.MessageParticle;
 import com.jtripled.voxen.network.MessageTeleport;
-import net.minecraft.item.EnumDyeColor;
+import com.jtripled.voxen.util.Color;
 import net.minecraftforge.fml.relauncher.Side;
 
 /**
@@ -17,22 +17,22 @@ import net.minecraftforge.fml.relauncher.Side;
  */
 public class EndervatorRegistry implements Registry
 {
-    public static final IBlockBase BLACK_ENDERVATOR      = new BlockEndervator(EnumDyeColor.BLACK);
-    public static final IBlockBase BLUE_ENDERVATOR       = new BlockEndervator(EnumDyeColor.BLUE);
-    public static final IBlockBase BROWN_ENDERVATOR      = new BlockEndervator(EnumDyeColor.BROWN);
-    public static final IBlockBase CYAN_ENDERVATOR       = new BlockEndervator(EnumDyeColor.CYAN);
-    public static final IBlockBase GRAY_ENDERVATOR       = new BlockEndervator(EnumDyeColor.GRAY);
-    public static final IBlockBase GREEN_ENDERVATOR      = new BlockEndervator(EnumDyeColor.GREEN);
-    public static final IBlockBase LIGHT_BLUE_ENDERVATOR = new BlockEndervator(EnumDyeColor.LIGHT_BLUE);
-    public static final IBlockBase LIME_ENDERVATOR       = new BlockEndervator(EnumDyeColor.LIME);
-    public static final IBlockBase MAGENTA_ENDERVATOR    = new BlockEndervator(EnumDyeColor.MAGENTA);
-    public static final IBlockBase ORANGE_ENDERVATOR     = new BlockEndervator(EnumDyeColor.ORANGE);
-    public static final IBlockBase PINK_ENDERVATOR       = new BlockEndervator(EnumDyeColor.PINK);
-    public static final IBlockBase PURPLE_ENDERVATOR     = new BlockEndervator(EnumDyeColor.PURPLE);
-    public static final IBlockBase RED_ENDERVATOR        = new BlockEndervator(EnumDyeColor.RED);
-    public static final IBlockBase SILVER_ENDERVATOR     = new BlockEndervator(EnumDyeColor.SILVER);
-    public static final IBlockBase WHITE_ENDERVATOR      = new BlockEndervator(EnumDyeColor.WHITE);
-    public static final IBlockBase YELLOW_ENDERVATOR     = new BlockEndervator(EnumDyeColor.YELLOW);
+    public static final IBlockBase BLACK_ENDERVATOR      = new BlockEndervator(Color.BLACK);
+    public static final IBlockBase BLUE_ENDERVATOR       = new BlockEndervator(Color.BLUE);
+    public static final IBlockBase BROWN_ENDERVATOR      = new BlockEndervator(Color.BROWN);
+    public static final IBlockBase CYAN_ENDERVATOR       = new BlockEndervator(Color.CYAN);
+    public static final IBlockBase GRAY_ENDERVATOR       = new BlockEndervator(Color.GRAY);
+    public static final IBlockBase GREEN_ENDERVATOR      = new BlockEndervator(Color.GREEN);
+    public static final IBlockBase LIGHT_BLUE_ENDERVATOR = new BlockEndervator(Color.LIGHT_BLUE);
+    public static final IBlockBase LIME_ENDERVATOR       = new BlockEndervator(Color.LIME);
+    public static final IBlockBase MAGENTA_ENDERVATOR    = new BlockEndervator(Color.MAGENTA);
+    public static final IBlockBase ORANGE_ENDERVATOR     = new BlockEndervator(Color.ORANGE);
+    public static final IBlockBase PINK_ENDERVATOR       = new BlockEndervator(Color.PINK);
+    public static final IBlockBase PURPLE_ENDERVATOR     = new BlockEndervator(Color.PURPLE);
+    public static final IBlockBase RED_ENDERVATOR        = new BlockEndervator(Color.RED);
+    public static final IBlockBase SILVER_ENDERVATOR     = new BlockEndervator(Color.SILVER);
+    public static final IBlockBase WHITE_ENDERVATOR      = new BlockEndervator(Color.WHITE);
+    public static final IBlockBase YELLOW_ENDERVATOR     = new BlockEndervator(Color.YELLOW);
     
     @Override
     public void onRegisterBlocks(RegistrationHandler handler)
