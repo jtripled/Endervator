@@ -1,12 +1,16 @@
 package com.jtripled.endervator;
 
-import com.jtripled.voxen.mod.ModBase;
-import com.jtripled.voxen.mod.Registry;
-import com.jtripled.voxen.network.Network;
+import com.jtripled.endervator.event.EndervatorClientMessageHandler;
+import com.jtripled.endervator.event.EndervatorMessage;
+import com.jtripled.endervator.event.EndervatorServerMessageHandler;
+import com.jtripled.endervator.proxy.Proxy;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 /**
  *
@@ -14,46 +18,47 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  */
 @Mod(modid = Endervator.ID, name = Endervator.NAME, version = Endervator.VERSION, dependencies = Endervator.DEPENDS)
 @Mod.EventBusSubscriber
-public class Endervator extends ModBase
+public class Endervator
 {
     public static final String ID = "endervator";
     public static final String NAME = "Endervator";
     public static final String VERSION = "1.0";
-    public static final String DEPENDS = "required-after:voxenforge";
+    public static final String DEPENDS = "";
     
-    @Mod.Instance(Endervator.ID)
+    @Mod.Instance(ID)
     public static Endervator INSTANCE;
     
-    public static Registry REGISTRY;
+    @SidedProxy(serverSide = "com.jtripled." + ID + ".proxy.ProxyServer", clientSide = "com.jtripled." + ID + ".proxy.ProxyClient")
+    public static Proxy PROXY;
     
-    public static final Network NETWORK = new Network(ID);
+    public static final SimpleNetworkWrapper NETWORK = new SimpleNetworkWrapper(ID);
+    
+    public static Endervator getInstance()
+    {
+        return INSTANCE;
+    }
 
-    @Override
-    public String getID()
+    public static String getID()
     {
         return ID;
     }
 
-    @Override
-    public String getName()
+    public static String getName()
     {
         return NAME;
     }
 
-    @Override
-    public String getVersion()
+    public static String getVersion()
     {
         return VERSION;
     }
     
-    @Override
-    public Registry getRegistry()
+    public static Proxy getProxy()
     {
-        return REGISTRY;
+        return PROXY;
     }
     
-    @Override
-    public Network getNetwork()
+    public static SimpleNetworkWrapper getNetwork()
     {
         return NETWORK;
     }
@@ -61,19 +66,19 @@ public class Endervator extends ModBase
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event)
     {
-        REGISTRY = new EndervatorRegistry();
-        preInit(event);
+        
     }
     
     @Mod.EventHandler
     public void onInit(FMLInitializationEvent event)
     {
-        init(event);
+        NETWORK.registerMessage(EndervatorServerMessageHandler.class, EndervatorMessage.class, 0, Side.SERVER);
+        NETWORK.registerMessage(EndervatorClientMessageHandler.class, EndervatorMessage.class, 1, Side.CLIENT);
     }
     
     @Mod.EventHandler
     public void onPostInit(FMLPostInitializationEvent event)
     {
-        postInit(event);
+        
     }
 }

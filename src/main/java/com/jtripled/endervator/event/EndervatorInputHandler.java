@@ -2,7 +2,6 @@ package com.jtripled.endervator.event;
 
 import com.jtripled.endervator.Endervator;
 import com.jtripled.endervator.block.BlockEndervator;
-import com.jtripled.voxen.network.MessageTeleport;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -85,7 +84,7 @@ public class EndervatorInputHandler
                 if (toBlock == fromBlock
                         && toBlock.getMetaFromState(toState) == fromBlock.getMetaFromState(fromState))
                 {
-                    Endervator.INSTANCE.getNetwork().sendToServer(new MessageTeleport(fromPos, toPos));
+                    Endervator.getNetwork().sendToServer(new EndervatorMessage(player.posX, player.posZ, fromPos.getY(), toPos.getY()));
                 }
             }
         }
