@@ -1,4 +1,4 @@
-package com.jtripled.endervator.event;
+package com.jtripled.endervator.network;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

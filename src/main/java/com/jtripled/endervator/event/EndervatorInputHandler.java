@@ -1,5 +1,6 @@
 package com.jtripled.endervator.event;
 
+import com.jtripled.endervator.network.EndervatorMessage;
 import com.jtripled.endervator.Endervator;
 import com.jtripled.endervator.block.BlockEndervator;
 import net.minecraft.block.Block;

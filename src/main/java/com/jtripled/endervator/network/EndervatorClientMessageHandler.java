@@ -1,4 +1,4 @@
-package com.jtripled.endervator.event;
+package com.jtripled.endervator.network;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;

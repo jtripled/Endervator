@@ -1,8 +1,8 @@
 package com.jtripled.endervator;
 
-import com.jtripled.endervator.event.EndervatorClientMessageHandler;
-import com.jtripled.endervator.event.EndervatorMessage;
-import com.jtripled.endervator.event.EndervatorServerMessageHandler;
+import com.jtripled.endervator.network.EndervatorClientMessageHandler;
+import com.jtripled.endervator.network.EndervatorMessage;
+import com.jtripled.endervator.network.EndervatorServerMessageHandler;
 import com.jtripled.endervator.proxy.Proxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -17,7 +17,6 @@ import net.minecraftforge.fml.relauncher.Side;
  * @author jtripled
  */
 @Mod(modid = Endervator.ID, name = Endervator.NAME, version = Endervator.VERSION, dependencies = Endervator.DEPENDS)
-@Mod.EventBusSubscriber
 public class Endervator
 {
     public static final String ID = "endervator";

@@ -1,4 +1,4 @@
-package com.jtripled.endervator.event;
+package com.jtripled.endervator.network;
 
 import com.jtripled.endervator.Endervator;
 import com.jtripled.endervator.block.BlockEndervator;
@@ -64,7 +64,7 @@ public class EndervatorServerMessageHandler implements IMessageHandler<Endervato
         player.world.playSound((EntityPlayer)null, message.getX(), message.getY1(), message.getZ(), SoundEvents.ENTITY_ENDERPEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F);
         player.world.playSound((EntityPlayer)null, message.getX(), message.getY2(), message.getZ(), SoundEvents.ENTITY_ENDERPEARL_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F);
         
-        Endervator.getNetwork().sendToAllAround(message, new TargetPoint(world.provider.getDimension(), message.getX(), message.getY1(), message.getZ(), 256));
+        Endervator.getNetwork().sendToAllAround(new EndervatorMessage(message), new TargetPoint(world.provider.getDimension(), message.getX(), message.getY1(), message.getZ(), 256));
         
         return null;
     }
