@@ -12,4 +12,9 @@ public class Proxy
     {
         
     }
+    
+    public void registerInputHandler()
+    {
+        
+    }
 }

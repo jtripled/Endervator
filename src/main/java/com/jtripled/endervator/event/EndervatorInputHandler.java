@@ -3,16 +3,19 @@ package com.jtripled.endervator.event;
 import com.jtripled.endervator.network.EndervatorMessage;
 import com.jtripled.endervator.Endervator;
 import com.jtripled.endervator.block.BlockEndervator;
+import java.lang.reflect.Field;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -20,19 +23,23 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *
  * @author jtripled
  */
-@Mod.EventBusSubscriber
+@SideOnly(Side.CLIENT)
 public class EndervatorInputHandler
 {
+    private static final Field JUMPING_FIELD = ReflectionHelper.findField(EntityLivingBase.class, "field_70703_bu", "isJumping");
+    
     private static boolean lastSneaking;
     private static boolean lastJumping;
     
     @SubscribeEvent
-    @SideOnly(Side.CLIENT)
-    public static void onInput(InputEvent event)
+    public void onInput(InputEvent event)
     {
         EntityPlayer player = Minecraft.getMinecraft().player;
         boolean sneaking = player.isSneaking();
-        boolean jumping = player.isJumping;
+        boolean jumping = false;
+        try {
+            jumping = JUMPING_FIELD.getBoolean(player);
+        } catch (Exception ex) { }
         boolean teleport = false;
         EnumFacing direction = null;
         if (lastSneaking != sneaking)

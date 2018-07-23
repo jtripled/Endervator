@@ -65,7 +65,7 @@ public class Endervator
     @Mod.EventHandler
     public void onPreInit(FMLPreInitializationEvent event)
     {
-        
+        PROXY.registerInputHandler();
     }
     
     @Mod.EventHandler
