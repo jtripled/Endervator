@@ -1,8 +1,5 @@
 package com.jtripled.endervator;
 
-import com.jtripled.endervator.network.EndervatorClientMessageHandler;
-import com.jtripled.endervator.network.EndervatorMessage;
-import com.jtripled.endervator.network.EndervatorServerMessageHandler;
 import com.jtripled.endervator.proxy.Proxy;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -10,27 +7,26 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
 
 /**
  *
  * @author jtripled
  */
-@Mod(modid = Endervator.ID, name = Endervator.NAME, version = Endervator.VERSION, dependencies = Endervator.DEPENDS)
+@Mod(modid = "@mod_id@", name = "@mod_name@", version = "@mod_version@", dependencies = "@mod_depends@")
 public class Endervator
 {
-    public static final String ID = "endervator";
-    public static final String NAME = "Endervator";
-    public static final String VERSION = "1.0";
-    public static final String DEPENDS = "";
+    protected static final String ID = "@mod_id@";
+    protected static final String NAME = "@mod_name@";
+    protected static final String VERSION = "@mod_version@";
+    protected static final String DEPENDS = "@mod_depends@";
     
     @Mod.Instance(ID)
-    public static Endervator INSTANCE;
+    protected static Endervator INSTANCE;
     
     @SidedProxy(serverSide = "com.jtripled." + ID + ".proxy.ProxyServer", clientSide = "com.jtripled." + ID + ".proxy.ProxyClient")
-    public static Proxy PROXY;
+    protected static Proxy PROXY;
     
-    public static final SimpleNetworkWrapper NETWORK = new SimpleNetworkWrapper(ID);
+    protected static final SimpleNetworkWrapper NETWORK = new SimpleNetworkWrapper(ID);
     
     public static Endervator getInstance()
     {
@@ -63,21 +59,20 @@ public class Endervator
     }
     
     @Mod.EventHandler
-    public void onPreInit(FMLPreInitializationEvent event)
+    protected void onPreInit(FMLPreInitializationEvent event)
     {
-        PROXY.registerInputHandler();
+        PROXY.onPreInit(event);
     }
     
     @Mod.EventHandler
-    public void onInit(FMLInitializationEvent event)
+    protected void onInit(FMLInitializationEvent event)
     {
-        NETWORK.registerMessage(EndervatorServerMessageHandler.class, EndervatorMessage.class, 0, Side.SERVER);
-        NETWORK.registerMessage(EndervatorClientMessageHandler.class, EndervatorMessage.class, 1, Side.CLIENT);
+        PROXY.onInit(event);
     }
     
     @Mod.EventHandler
-    public void onPostInit(FMLPostInitializationEvent event)
+    protected void onPostInit(FMLPostInitializationEvent event)
     {
-        
+        PROXY.onPostInit(event);
     }
 }

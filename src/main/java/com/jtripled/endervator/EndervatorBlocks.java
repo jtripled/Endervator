@@ -34,21 +34,21 @@ public class EndervatorBlocks
     @SubscribeEvent
     public static void onRegisterBlocks(RegistryEvent.Register<Block> event)
     {
-        event.getRegistry().register(BLACK_ENDERVATOR);
-        event.getRegistry().register(BLUE_ENDERVATOR);
-        event.getRegistry().register(BROWN_ENDERVATOR);
-        event.getRegistry().register(CYAN_ENDERVATOR);
-        event.getRegistry().register(GRAY_ENDERVATOR);
-        event.getRegistry().register(GREEN_ENDERVATOR);
-        event.getRegistry().register(LIGHT_BLUE_ENDERVATOR);
-        event.getRegistry().register(LIME_ENDERVATOR);
-        event.getRegistry().register(MAGENTA_ENDERVATOR);
-        event.getRegistry().register(ORANGE_ENDERVATOR);
-        event.getRegistry().register(PINK_ENDERVATOR);
-        event.getRegistry().register(PURPLE_ENDERVATOR);
-        event.getRegistry().register(RED_ENDERVATOR);
-        event.getRegistry().register(SILVER_ENDERVATOR);
-        event.getRegistry().register(WHITE_ENDERVATOR);
-        event.getRegistry().register(YELLOW_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, BLACK_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, BLUE_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, BROWN_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, CYAN_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, GRAY_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, GREEN_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, LIGHT_BLUE_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, LIME_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, MAGENTA_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, ORANGE_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, PINK_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, PURPLE_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, RED_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, SILVER_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, WHITE_ENDERVATOR);
+        Endervator.getProxy().registerBlock(event, YELLOW_ENDERVATOR);
     }
 }

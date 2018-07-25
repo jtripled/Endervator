@@ -15,13 +15,11 @@ import net.minecraft.util.ResourceLocation;
  */
 public final class BlockEndervator extends Block
 {
-    public static final String NAME = "endervator";
-    
     public BlockEndervator(EnumDyeColor color)
     {
         super(Material.ROCK, MapColor.getBlockColor(color));
-        this.setUnlocalizedName(color.getName() + "_" + NAME);
-        this.setRegistryName(new ResourceLocation(Endervator.ID, color.getName() + "_" + NAME));
+        this.setUnlocalizedName(color.getName() + "_endervator");
+        this.setRegistryName(new ResourceLocation(Endervator.getID(), color.getName() + "_endervator"));
         this.setCreativeTab(CreativeTabs.TRANSPORTATION);
         this.setHardness(20.0f);
         this.setResistance(100.0f);

@@ -1,10 +1,9 @@
 package com.jtripled.endervator.proxy;
 
-import com.jtripled.endervator.event.EndervatorInputHandler;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 
 /**
  *
@@ -13,14 +12,9 @@ import net.minecraftforge.common.MinecraftForge;
 public class ProxyClient extends Proxy
 {
     @Override
-    public void registerItemRenderer(Item item, String variant)
+    public void registerItem(RegistryEvent.Register<Item> event, Item item)
     {
-        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), variant));
-    }
-    
-    @Override
-    public void registerInputHandler()
-    {
-        MinecraftForge.EVENT_BUS.register(new EndervatorInputHandler());
+        super.registerItem(event, item);
+        ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "normal"));
     }
 }

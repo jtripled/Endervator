@@ -7,12 +7,12 @@ import java.lang.reflect.Field;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -23,7 +23,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  *
  * @author jtripled
  */
-@SideOnly(Side.CLIENT)
+@Mod.EventBusSubscriber
 public class EndervatorInputHandler
 {
     private static final Field JUMPING_FIELD = ReflectionHelper.findField(EntityLivingBase.class, "field_70703_bu", "isJumping");
@@ -32,7 +32,8 @@ public class EndervatorInputHandler
     private static boolean lastJumping;
     
     @SubscribeEvent
-    public void onInput(InputEvent event)
+    @SideOnly(Side.CLIENT)
+    public static void onInput(InputEvent event)
     {
         EntityPlayer player = Minecraft.getMinecraft().player;
         boolean sneaking = player.isSneaking();
